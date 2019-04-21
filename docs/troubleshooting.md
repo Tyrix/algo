@@ -215,7 +215,7 @@ The error is caused because Digital Ocean changed its API to treat the tag argum
 1. Download [doctl](https://github.com/digitalocean/doctl)
 2. Run `doctl auth init`; it will ask you for your token which you can get (or generate) on the API tab at DigitalOcean
 3. Once you are authorized on DO, you can run `doctl compute tag list` to see the list of tags
-4. Run `doctl compute tag delete enivronment:algo --force` to delete the environment:algo tag
+4. Run `doctl compute tag delete environment:algo --force` to delete the environment:algo tag
 5. Finally run `doctl compute tag list` to make sure that the tag has been deleted
 6. Run algo as directed
 
@@ -390,6 +390,10 @@ For IPsec on Linux you can change the MTU of your network interface to match the
 sudo ifconfig eth0 mtu 1440
 ```
 To make the change take affect after a reboot, on Ubuntu 18.04 and later edit the relevant file in the `/etc/netplan` directory (see `man netplan`).
+
+#### Note for WireGuard iOS users
+
+As of WireGuard for iOS 0.0.20190107 the default MTU is 1280, a conservative value intended to allow mobile devices to continue to work as they switch between different networks which might have smaller than normal MTUs. In order to use this default MTU review the configuration in the WireGuard app and remove any value for MTU that might have been added automatically by Algo.
 
 ### Clients appear stuck in a reconnection loop
 

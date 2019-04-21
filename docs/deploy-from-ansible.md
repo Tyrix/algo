@@ -179,7 +179,7 @@ Required variables:
 
 Required variables:
 
-- [vultr_config](https://github.com/trailofbits/algo/docs/cloud-vultr.md)
+- [vultr_config](https://trailofbits.github.io/algo/cloud-vultr.html)
 - [region](https://api.vultr.com/v1/regions/list)
 
 ### Azure
@@ -201,6 +201,29 @@ Required variables:
 - region
 
 Possible options can be gathered via cli `aws lightsail get-regions`
+
+#### Minimum required IAM permissions for deployment:
+
+```
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "LightsailDeployment",
+            "Effect": "Allow",
+            "Action": [
+                "lightsail:GetRegions",
+                "lightsail:GetInstance",
+                "lightsail:CreateInstances",
+                "lightsail:OpenInstancePublicPorts"
+            ],
+            "Resource": [
+                "*"
+            ]
+        }
+    ]
+}
+```
 
 ### Scaleway
 
@@ -225,7 +248,7 @@ You need to source the rc file prior to run Algo. Download it from the OpenStack
 Required variables:
 
 - server - IP or hostname to access the server via SSH
-- endpoint - Public IP address of your server
+- endpoint - Public IP address or domain name of your server
 - ssh_user
 
 
